@@ -4,6 +4,25 @@ using namespace std;
 
 //pass in space-delimited arguments when you call the executable
 //Example: ./a.out 1 2 3.3
+double debt_finder(double cost, double m_interest_rate, double m_payments)
+{
+    double balance = cost;
+    double principle = m_payments - m_interest_rate * balance;
+    // 50 - 1.5% * 1000 = 35
+    double interest = m_interest_rate * balance;
+    // 1.5% * 1000 = 15
+    while (balance > 0) {
+        principle = m_payments - (m_interest_rate * .01) * balance;
+        if (principle > balance) {
+            balance = 0;
+        }
+        interest = m_interest_rate * balance;
+        balance -= principle;
+        
+    }
+    return balance;
+}
+
 int main( int argc, char * argv[] )
 {
 	if (argc > 4) 
@@ -16,6 +35,7 @@ int main( int argc, char * argv[] )
 	double loan_amount, yearly_interest_rate, monthly_payment;
 
 	double arguments [3];
+	double monthly_interest_rate = yearly_interest_rate / 12;
 
 	if (argc > 1)
 	{
