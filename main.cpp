@@ -126,10 +126,10 @@ int main(int argc, char *argv[])
 	while (balance > 0) {
 		if (current_month == 0) {
 			cout << current_month++ << "\t$" << balance;
-		}
-		if (balance < 1000) cout << "\t"; // Formatting MAGIC
-		{
-			cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
+			if (balance < 1000) cout << "\t"; // Formatting MAGIC
+			{
+				cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
+			}
 		}
 		else {
 			interest = balance * monthly_interest_rate;
