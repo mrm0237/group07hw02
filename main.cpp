@@ -24,34 +24,95 @@ double debt_finder(double cost, double m_interest_rate, double m_payments)
     return balance;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 	// Define variables
-	int i = 1;
-	double loan_amount, yearly_interest_rate, monthly_payment;
+	double loan_amount
+	double yearly_interest_rate
+	double monthly_payment;
 
-	double arguments [3];
-	double monthly_interest_rate = yearly_interest_rate / 12;
+ // Check command-line arguments
+    if (argc > 4)
+    {
+        cout << "Too many arguments. Cannot pass in more than three."
+             << endl;
+        return -1;
+    }
 
-	// USER INPUT
-	cout << "\nLoan Amount: ";
-	cin >> loan;
-	while (loan < 0) { // Program will not move forward unless positive loan is entered
-		cout << "\nEnter a positive loan amount: "; 
-		cin >> loan;
+    // If arguments were provided, use them
+    if (argc > 1)
+    {
+        if (argc != 4)
+        {
+            cout << "Please provide all three arguments:"
+                 << " loan amount, interest rate, and monthly payment."
+                 << endl;
+            return -1;
+        }
+
+        try
+        {
+            loan_amount = stod(argv[1]);
+            yearly_interest_rate = stod(argv[2]);
+            monthly_payment = stod(argv[3]);
+        }
+        catch (const invalid_argument&)
+        {
+            cout << "Invalid argument." << endl;
+            return -2;
+        }
+	
+		// USER INPUT
+		if (loan <= 0) { // Program will not move forward unless positive loan is entered
+			cout << "Loan amount must be positive." << endl; 
+			return -1;
+		}
+		
+		if (yearly_interest_rate < 0) { // Program will not move forward until a positive interest rate is entered
+			cout << "Interest rate must be positive." << endl;
+			return -1;
+		}
+		
+		while (monthly_payments < 0) { // Program will not move forward until a positive monthly payment is entered.
+			cout("Monthly payment must be positive.");
+			return -1;
+		}
+
+	else {
+		cout << "Loan Amount: ";
+        cin >> loan_amount;
+
+        while (loan_amount <= 0)
+        {
+            cout << "Enter a positive loan amount: ";
+            cin >> loan_amount;
+        }
+
+        cout << "Interest Rate (% per year): ";
+        cin >> yearly_interest_rate;
+
+        while (yearly_interest_rate < 0)
+        {
+            cout << "Enter a positive interest rate: ";
+            cin >> yearly_interest_rate;
+        }
+
+        cout << "Monthly Payments: ";
+        cin >> monthly_payment;
+
+        while (monthly_payment <= 0)
+        {
+            cout << "Enter a positive monthly payment: ";
+            cin >> monthly_payment;
+        }
 	}
-	
-	cout << "Interest rate (% per year): ";
-	cin >> month_int_rate;
-	while (loan < 0) { // Program will not move forward until a positive interest rate is entered
-		cout << "\nEnter a positive interest rate: ";
-		cin >> month_int_rate;
-	}
-	
-	monthly_paid = month_int_rate / 100;
-	cout << "Monthly Payments: ";
-	cin >> monthly_paid;
-	
+
+	double monthly_interest_rate = (yearly_interest_rate / 100.0) / 12.0;
+	double balance = loan_amount;
+	double total_interest = 0.0;
+	int current_month = 0;
+
+	cout << fixed << set_precision(2);
 
 	loan_amount = arguments[0];
 	yearly_interest_rate = arguments[1];
