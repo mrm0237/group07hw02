@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
         }
 	
 		// USER INPUT
-		if (loan <= 0) { // Program will not move forward unless positive loan is entered
+		if (loan_amount <= 0) { // Program will not move forward unless positive loan is entered
 			cout << "Loan amount must be positive." << endl; 
 			return -1;
 		}
@@ -116,7 +116,6 @@ int main(int argc, char *argv[])
 
 	cout << fixed << setprecision(2);
 
-
 	cout << "*****************************************************************\n"
 	<< "\tAmortization Table\n"
 	<< "*****************************************************************\n"
@@ -124,16 +123,18 @@ int main(int argc, char *argv[])
 	double interest;
 	double payment;
 	double principal;
-	while (loan > 0) {
+	while (balance > 0) {
 		if (current_month == 0) {
-			cout << current_month++ << "\t$" << loan;
-		if (loan < 1000) cout << "\t"; // Formatting MAGIC
+			cout << current_month++ << "\t$" << balance;
+		}
+		if (balance < 1000) cout << "\t"; // Formatting MAGIC
+		{
 			cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
 		}
 		else {
-			interest = balance * monthly_interest_rate / 100;
+			interest = balance * monthly_interest_rate;
 			payment = monthly_payment;
-			if (loan + interest < monthly_payment) { 
+			if (balance + interest < monthly_payment) { 
 				payment = balance + interest;
 			}
 			principal = payment - interest;
@@ -141,15 +142,13 @@ int main(int argc, char *argv[])
 			if (balance < 0.005) {
 				balance = 0;
 			}
-			interest_total += interest;
+			total_interest += interest;
 			cout << current_month << "\t$" << balance << "\t$" << payment << "\t" << monthly_interest_rate << "\t$" << interest << "\t$" << principal << endl;
 			current_month++;
 		}
 	}
 			
 	cout << "****************************************************************\n";
-	cout << "\nIt takes " << --current_month << " months to pay off " << "the loan.\n" << "Total interest paid is: $" << interestTotal;
+	cout << "\nIt takes " << --current_month << " months to pay off " << "the loan.\n" << "Total interest paid is: $" << total_interest;
 	
-	cout << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
-
 	return 0;
