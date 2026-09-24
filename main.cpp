@@ -122,32 +122,34 @@ int main(int argc, char *argv[])
 	<< "*****************************************************************\n"
 	<< "Month\tBalance\t\tPayment\tRate\tInterest\tPrincipal\n";
 	double interest;
-	double payment = monthly_payment;
+	double payment;
 	double principal;
-	while (balance > 0) {
+	while (loan > 0) {
 		if (current_month == 0) {
-			cout << current_month++ << "\t$" << balance;
-		if (balance < 1000) cout << "\t"; // Formatting MAGIC
+			cout << current_month++ << "\t$" << loan;
+		if (loan < 1000) cout << "\t"; // Formatting MAGIC
 			cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
 		}
 		else {
 			interest = balance * monthly_interest_rate / 100;
-			if (balance + interest < monthly_payment) { 
+			payment = monthly_payment;
+			if (loan + interest < monthly_payment) { 
 				payment = balance + interest;
 			}
 			principal = payment - interest;
 			balance -= principal;
 			if (balance < 0.005) {
-				loan = 0;
+				balance = 0;
 			}
 			interest_total += interest;
-			cout << current_month << "\t$" << loan << "\t$" << payment << "\t" << monthly_interest_rate << "\t$" << interest << "\t$" << principal << endl;
+			cout << current_month << "\t$" << balance << "\t$" << payment << "\t" << monthly_interest_rate << "\t$" << interest << "\t$" << principal << endl;
 			current_month++;
+		}
+	}
 			
 	cout << "****************************************************************\n";
 	cout << "\nIt takes " << --current_month << " months to pay off " << "the loan.\n" << "Total interest paid is: $" << interestTotal;
 	
-	cout << loan << " " << yearly_interest_rate << " " << monthly_payment << endl;
+	cout << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	return 0;
-}
