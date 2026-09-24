@@ -1,5 +1,6 @@
 // Riggs McLeod & David Lilley
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -74,9 +75,10 @@ int main(int argc, char *argv[])
 		}
 		
 		while (monthly_payments < 0) { // Program will not move forward until a positive monthly payment is entered.
-			cout("Monthly payment must be positive.");
+			cout << "Monthly payment must be positive." << endl;
 			return -1;
 		}
+	}
 
 	else {
 		cout << "Loan Amount: ";
@@ -112,11 +114,9 @@ int main(int argc, char *argv[])
 	double total_interest = 0.0;
 	int current_month = 0;
 
-	cout << fixed << set_precision(2);
+	cout << fixed << setprecision(2);
 
-	loan_amount = arguments[0];
-	yearly_interest_rate = arguments[1];
-	monthly_payment = arguments[2];
+
 	cout << "*****************************************************************\n"
 	<< "\tAmortization Table\n"
 	<< "*****************************************************************\n"
@@ -147,7 +147,7 @@ int main(int argc, char *argv[])
 	cout << "****************************************************************\n";
 	cout << "\nIt takes " << --current_month << " months to pay off " << "the loan.\n" << "Total interest paid is: $" << interestTotal;
 	
-	cout << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
+	cout << loan << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	return 0;
 }
