@@ -28,8 +28,8 @@ double debt_finder(double cost, double m_interest_rate, double m_payments)
 int main(int argc, char *argv[])
 {
 	// Define variables
-	double loan_amount
-	double yearly_interest_rate
+	double loan_amount;
+	double yearly_interest_rate;
 	double monthly_payment;
 
  // Check command-line arguments
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 			return -1;
 		}
 		
-		while (monthly_payments < 0) { // Program will not move forward until a positive monthly payment is entered.
+		while (monthly_payment < 0) { // Program will not move forward until a positive monthly payment is entered.
 			cout << "Monthly payment must be positive." << endl;
 			return -1;
 		}
@@ -124,20 +124,20 @@ int main(int argc, char *argv[])
 	double interest;
 	double payment = monthly_payment;
 	double principal;
-	while (loan > 0) {
+	while (balance > 0) {
 		if (current_month == 0) {
-			cout << current_month++ << "\t$" << loan;
-		if (loan < 1000) cout << "\t"; // Formatting MAGIC
+			cout << current_month++ << "\t$" << balance;
+		if (balance < 1000) cout << "\t"; // Formatting MAGIC
 			cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
 		}
 		else {
-			interest = loan * monthly_interest_rate / 100;
-			if (loan + interest < monthly_payment) { 
-				payment = loan + interest;
+			interest = balance * monthly_interest_rate / 100;
+			if (balance + interest < monthly_payment) { 
+				payment = balance + interest;
 			}
 			principal = payment - interest;
-			loan -= principal;
-			if (loan < 0.005) {
+			balance -= principal;
+			if (balance < 0.005) {
 				loan = 0;
 			}
 			interest_total += interest;
