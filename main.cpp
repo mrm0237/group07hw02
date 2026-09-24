@@ -1,3 +1,4 @@
+// Riggs McLeod & David Lilley
 #include <iostream>
 
 using namespace std;
@@ -30,13 +31,18 @@ int main( int argc, char * argv[] )
 		cout << "Too many arguments. Cannot pass in more than three." << endl;
 		return -1;
 	}
-
+	// Define variables
 	int i = 1;
 	double loan_amount, yearly_interest_rate, monthly_payment;
 
 	double arguments [3];
 	double monthly_interest_rate = yearly_interest_rate / 12;
 
+	// USER INPUT
+	cout << "\nLoan Amount: ";
+	cin >> loan;
+
+	
 	if (argc > 1)
 	{
 		while ( i < argc )
