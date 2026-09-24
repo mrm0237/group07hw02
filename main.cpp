@@ -69,6 +69,21 @@ int main( int argc, char * argv[] )
 	loan_amount = arguments[0];
 	yearly_interest_rate = arguments[1];
 	monthly_payment = arguments[2];
+	cout << "*****************************************************************\n"
+	<< "\tAmortization Table\n"
+	<< "*****************************************************************\n"
+	<< "Month\tBalance\t\tPayment\tRate\tInterest\tPrincipal\n";
+	while (loan > 0) {
+		if (current_month == 0) {
+			cout << current_month++ << "\t$" << loan;
+			if (loan < 1000) cout << "\t"; // Formatting MAGIC
+				cout << "\t" << "N/A\tN/A\tN/A\t\tN/A\n";
+			
+		}
+		else {
+	cout << "****************************************************************\n";
+	cout << "\nIt takes " << --current_month << " months to pay off " << "the loan.\n" << "Total interest paid is: $" << interestTotal;
+	
 	cout << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	return 0;
