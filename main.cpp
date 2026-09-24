@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 			return -1;
 		}
 		
-		while (monthly_payment < 0) { // Program will not move forward until a positive monthly payment is entered.
+		if (monthly_payment <= 0) { // Program will not move forward until a positive monthly payment is entered.
 			cout << "Monthly payment must be positive." << endl;
 			return -1;
 		}
