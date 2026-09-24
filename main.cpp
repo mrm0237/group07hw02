@@ -41,6 +41,22 @@ int main( int argc, char * argv[] )
 	// USER INPUT
 	cout << "\nLoan Amount: ";
 	cin >> loan;
+	while (loan < 0) { // Program will not move forward unless positive loan is entered
+		cout << "\nEnter a positive loan amount: "; 
+		cin >> loan;
+	}
+	
+	cout << "Interest rate (% per year)": ";
+	cin >> month_int_rate;
+	while (loan < 0) { // Program will not move forward until a positive interest rate is entered
+		cout << "\nEnter a positive interest rate: ";
+		cin >> month_int_rate;
+	}
+	
+	monthly_paid = month_int_rate / 100;
+	cout << "Monthly Payments: ";
+	cin >> monthly_paid;
+	
 
 	
 	if (argc > 1)
