@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 		if (current_month == 0) {
 			cout << current_month++ << "\t$" << balance;
 			if (balance < 1000) cout << "\t"; // Formatting MAGIC
-				cout << "\t" 
+				cout << "\t"; 
 			cout << "N/A\tN/A\tN/A\t\tN/A\n";
 		}
 		else {
