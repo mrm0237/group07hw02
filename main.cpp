@@ -131,6 +131,21 @@ int main(int argc, char *argv[])
     double monthly_interest_rate =
         (yearly_interest_rate / 100.0) / 12.0;
 
+    double first_month_interest = loan_amount * monthly_interest_rate;
+
+    // Special Case #2: monthly payment must exceed the first month's interest or the balance will never decrease
+    if (monthly_payment <= first_month_interest)
+    {
+        cout << fixed << setprecision(2);
+        cout << "Monthly payment of $" << monthly_payment
+             << " is too low to cover the first month's interest of $"
+             << first_month_interest
+             << ". This loan can never be paid off with these terms."
+             << endl;
+        return -1;
+    }
+
+    
     double balance = loan_amount;
     double total_interest = 0.0;
     int current_month = 0;
